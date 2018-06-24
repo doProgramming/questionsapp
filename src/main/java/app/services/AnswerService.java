@@ -5,6 +5,13 @@ import app.enity.Question;
 
 import java.util.List;
 
+/**
+ *
+ * API for @see {@link app.services.impl.AnswersServiceImpl}
+ *
+ *
+ * */
+
 public interface AnswerService {
 
     void saveAnswerAndQuestion(Answer answer, Question question);

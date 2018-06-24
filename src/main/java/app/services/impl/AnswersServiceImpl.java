@@ -17,8 +17,6 @@ public class AnswersServiceImpl implements AnswerService {
 
     private SessionFactory sessionFactory = null;
 
-
-
     @Override
     public void saveAnswer(Answer answer){
         Session session = createSessino();
@@ -82,10 +80,14 @@ public class AnswersServiceImpl implements AnswerService {
         Random random = new Random();
         int getId = 0;
         Question question = null;
+
+        //Here we get random question from DB
         while (question == null){
-            getId = random.nextInt(6) + 1;
-            question = session.load( Question.class, new Integer(getId) );}
-        //view.getData(question);
+            getId = random.nextInt(2) + 1;
+            try {
+                question = session.load( Question.class, new Integer(getId) );
+            }catch (NullPointerException e){}
+            }
         return question;
     }
 

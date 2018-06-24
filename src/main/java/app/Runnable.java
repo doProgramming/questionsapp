@@ -1,12 +1,9 @@
 package app;
 
-import app.view.View;
-import org.springframework.boot.SpringApplication;
+import app.view.impl.View;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
-
-import javax.swing.*;
 
 @SpringBootApplication
 public class Runnable {

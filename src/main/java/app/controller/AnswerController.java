@@ -2,8 +2,7 @@ package app.controller;
 
 import app.enity.Answer;
 import app.enity.Question;
-import app.services.impl.AnswersServiceImpl;
-import app.view.View;
+import app.view.impl.View;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -13,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import app.services.AnswerService;
-
-import java.util.Random;
 
 @RestController
 public class AnswerController {
