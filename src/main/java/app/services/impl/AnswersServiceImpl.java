@@ -86,7 +86,8 @@ public class AnswersServiceImpl implements AnswerService {
             getId = random.nextInt(2) + 1;
             try {
                 question = session.load( Question.class, new Integer(getId) );
-            }catch (NullPointerException e){}
+            }
+            catch (NullPointerException e){}
             }
         return question;
     }

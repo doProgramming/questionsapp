@@ -41,14 +41,14 @@ public class View implements TypeOfQuestions {
     Collection<Answer> answers = new ArrayList<>();
     public View() {
         //buttonList.addAll(radioButton2,radioButton3,radioButton4,radioButton5,radioButton6,radioButton7,radioButton8,yesRadioButton);
-        radioButton2.setVisible(false);
-        radioButton3.setVisible(false);
-        radioButton4.setVisible(false);
-        radioButton5.setVisible(false);
-        radioButton6.setVisible(false);
-        radioButton7.setVisible(false);
-        radioButton8.setVisible(false);
-        yesRadioButton.setVisible(false);
+//        radioButton2.setVisible(true);
+//        radioButton3.setVisible(false);
+//        radioButton4.setVisible(false);
+//        radioButton5.setVisible(false);
+//        radioButton6.setVisible(false);
+//        radioButton7.setVisible(false);
+//        radioButton8.setVisible(false);
+//        yesRadioButton.setVisible(false);
         progressBar1.setMaximum(10);
         progressBar1.setStringPainted(true);
         textArea1.setText("John Test");
@@ -61,7 +61,9 @@ public class View implements TypeOfQuestions {
                 //progress bar
                 progressBar1.setValue(counterProgress);
                 counterProgress++;
+                //Next question + adding answers
                 nextQuestion(e);
+
             }
         });
         startTestButton.addActionListener(new ActionListener() {
@@ -87,10 +89,10 @@ public class View implements TypeOfQuestions {
                     jFrame.setMinimumSize(dimension);
                     jFrame.setVisible(true);
                     View frame = new View();
-                    panel1.setBorder(new BevelBorder(14));
+                    panel1.setBorder(new BevelBorder(22));
                     frame.panel1.setVisible(true);
                     panel1.setVisible(true);
-                    Font font = new Font("Good Morning.ttf",2,15);
+                    Font font = new Font("Good Morning.ttf",2,25);
                     font.isBold();
                     textPane1.setFont(font);
 
@@ -121,8 +123,8 @@ public class View implements TypeOfQuestions {
             switch (i){
                 case 0:
                     radioButton2.setText(answer.getAnswerText());
+                    radioButton2.setName(answer.getAnswerText());
                     radioButton2.updateUI();
-                    radioButton2.setVisible(true);
                     break;
                 case 1:
                     radioButton3.setText(answer.getAnswerText());
