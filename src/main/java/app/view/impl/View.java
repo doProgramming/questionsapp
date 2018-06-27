@@ -107,6 +107,14 @@ public class View implements TypeOfQuestions {
 
     @Override
     public void nextQuestion(ActionEvent e){
+        radioButton2.setVisible(false);
+        radioButton3.setVisible(false);
+        radioButton4.setVisible(false);
+        radioButton5.setVisible(false);
+        radioButton6.setVisible(false);
+        radioButton7.setVisible(false);
+        radioButton8.setVisible(false);
+        yesRadioButton.setVisible(false);
         startTestButton.setVisible(false);
         Question question = new Question();
         try{
@@ -122,37 +130,45 @@ public class View implements TypeOfQuestions {
             ++i;
             switch (i){
                 case 0:
+                    //TODO Add here checkout for selected answers on previous question and save in memmory and after in db
+                    // if(radioButton2.isSelected())
                     radioButton2.setText(answer.getAnswerText());
-                    radioButton2.setName(answer.getAnswerText());
+                    radioButton2.setVisible(true);
                     radioButton2.updateUI();
                     break;
                 case 1:
                     radioButton3.setText(answer.getAnswerText());
+                    radioButton3.setVisible(true);
                     radioButton3.updateUI();
                     break;
                 case 2:
                     radioButton4.setText(answer.getAnswerText());
+                    radioButton4.setVisible(true);
                     radioButton4.updateUI();
                     break;
                 case 3:
                     radioButton5.setText(answer.getAnswerText());
+                    radioButton5.setVisible(true);
                     radioButton5.updateUI();
                     break;
                 case 4:
                     radioButton6.setText(answer.getAnswerText());
+                    radioButton6.setVisible(true);
                     radioButton6.updateUI();
-                    radioButton2.setName(answer.getAnswerText());
                     break;
                 case 5:
                     radioButton7.setText(answer.getAnswerText());
+                    radioButton7.setVisible(true);
                     radioButton7.updateUI();
                     break;
                 case 6:
                     yesRadioButton.setText(answer.getAnswerText());
+                    yesRadioButton.setVisible(true);
                     yesRadioButton.updateUI();
                     break;
                 case 7:
                     radioButton8.setText(answer.getAnswerText());
+                    radioButton8.setVisible(true);
                     radioButton8.updateUI();
                     break;
             }
