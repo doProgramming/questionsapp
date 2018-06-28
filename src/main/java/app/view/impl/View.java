@@ -2,6 +2,8 @@ package app.view.impl;
 
 import app.enity.Answer;
 import app.enity.Question;
+import app.enity.Respodent;
+import app.enity.Test;
 import app.services.impl.AnswersServiceImpl;
 import app.view.TypeOfQuestions;
 import org.springframework.stereotype.Component;
@@ -13,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 @Component
 public class View implements TypeOfQuestions {
@@ -35,7 +38,10 @@ public class View implements TypeOfQuestions {
     private JButton Save;
     private JButton startTestButton;
     private JProgressBar progressBar1;
+    private JTextArea pointsText;
+    private JPanel Points;
     int counterProgress = 0;
+    int points;
 
 
     Collection<Answer> answers = new ArrayList<>();
@@ -125,18 +131,42 @@ public class View implements TypeOfQuestions {
         }catch (Exception el){}
         textPane1.setText(question.getQuestionText());
         String allAnswers = null;
-        int i=0;
+        int i = 0;
+        int point = 0;
+
+        //Set credentials of user
+        Test test = new Test();
+        Respodent respodent = new Respodent();
+        respodent.setName("Pero");
+        respodent.setLastName("John");
+
         for(Answer answer : answers){
             ++i;
             switch (i){
                 case 0:
-                    //TODO Add here checkout for selected answers on previous question and save in memmory and after in db
-                    // if(radioButton2.isSelected())
+                    //TODO make private method for test and answer tables
+                    if(radioButton2.isSelected()){
+                        if(answer.getTrue()){
+                            point++;
+                            points = points + point;
+                        test.setNumberOfPoints(point);
+                        test.setAnswers(question.getAnswers());
+                        pointsText.setText(String.valueOf(points));
+                        }
+                    }
                     radioButton2.setText(answer.getAnswerText());
                     radioButton2.setVisible(true);
                     radioButton2.updateUI();
                     break;
                 case 1:
+                    if(radioButton3.isSelected()){
+                        if(answer.getTrue()){
+                            point++;
+                            test.setNumberOfPoints(point);
+                            test.setAnswers(question.getAnswers());
+                            pointsText.setText(String.valueOf(point));
+                        }
+                    }
                     radioButton3.setText(answer.getAnswerText());
                     radioButton3.setVisible(true);
                     radioButton3.updateUI();
@@ -180,4 +210,5 @@ public class View implements TypeOfQuestions {
     private void createUIComponents() {
         // TODO: place custom component creation code here
     }
+
 }

@@ -20,6 +20,12 @@ public class Test {
     @Column(name = "test_id",nullable = false)
     private int testId;
 
+    @Column(name = "fk_question_id")
+    private int questionId;
+
+    @Column(name = "fk_answer_id")
+    private int answerId;
+
     @Column(name = "number_points")
     private int numberOfPoints;
 
