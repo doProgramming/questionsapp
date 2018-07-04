@@ -6,6 +6,7 @@ import app.enity.Respodent;
 import app.enity.Test;
 import app.services.impl.AnswersServiceImpl;
 import app.view.TypeOfQuestions;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
@@ -15,7 +16,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 @Component
 public class View implements TypeOfQuestions {
@@ -35,26 +35,32 @@ public class View implements TypeOfQuestions {
     private JRadioButton radioButton6;
     private JRadioButton radioButton7;
     private JRadioButton radioButton8;
-    private JButton Save;
+    private JButton skip;
     private JButton startTestButton;
     private JProgressBar progressBar1;
     private JTextArea pointsText;
+    private JPanel second;
+    private JPanel first;
+    private JTextArea footer;
+    private JTextArea name;
+    private JTextArea lastname;
     private JPanel Points;
     int counterProgress = 0;
     int points;
 
-
     Collection<Answer> answers = new ArrayList<>();
     public View() {
         //buttonList.addAll(radioButton2,radioButton3,radioButton4,radioButton5,radioButton6,radioButton7,radioButton8,yesRadioButton);
-//        radioButton2.setVisible(true);
-//        radioButton3.setVisible(false);
-//        radioButton4.setVisible(false);
-//        radioButton5.setVisible(false);
-//        radioButton6.setVisible(false);
-//        radioButton7.setVisible(false);
-//        radioButton8.setVisible(false);
-//        yesRadioButton.setVisible(false);
+        radioButton2.setVisible(false);
+        radioButton3.setVisible(false);
+        radioButton4.setVisible(false);
+        radioButton5.setVisible(false);
+        radioButton6.setVisible(false);
+        radioButton7.setVisible(false);
+        radioButton8.setVisible(false);
+        yesRadioButton.setVisible(false);
+        nextQuestionButton.setVisible(false);
+        skip.setVisible(false);
         progressBar1.setMaximum(10);
         progressBar1.setStringPainted(true);
         textArea1.setText("John Test");
@@ -75,6 +81,7 @@ public class View implements TypeOfQuestions {
         startTestButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                nextQuestionButton.setVisible(true);
                 nextQuestion(e);
 
             }
@@ -85,13 +92,13 @@ public class View implements TypeOfQuestions {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    JFrame jFrame = new JFrame("Java interview test");
+                    JFrame jFrame = new JFrame("Interview questions");
                     jFrame.setContentPane(new View().panel1);
                     jFrame.setDefaultCloseOperation(jFrame.EXIT_ON_CLOSE);
                     jFrame.pack();
                     nextQuestionButton.setVisible(false);
                     Dimension dimension = new Dimension();
-                    dimension.setSize(400,400);
+                    dimension.setSize(500,400);
                     jFrame.setMinimumSize(dimension);
                     jFrame.setVisible(true);
                     View frame = new View();
